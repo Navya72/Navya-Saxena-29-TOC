@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+int bs;
+cout<<"Enter bit size (4, 6, 8) : ";
+cin>>bs;
+char bn[bs + 1], oc[bs + 1], tc[bs + 1];
+int i, c=1;
+int r = 0;
+cout << " Input a " << bs << " bit binary value: ";
+cin >> bn;
+for (i = 0; i < bs; i++)
+{
+if (bn[i] == '1')
+{
+oc[i] = '0';
+}
+else if (bn[i] == '0')
+{
+oc[i] = '1';
+}
+else
+{
+cout << "Invalid Input. please enter in 0/1." << endl;
+r = 1;
+break;
+}
+}
+oc[bs] = '\0';
+for (i = bs - 1; i >= 0; i--)
+{
+if (oc[i] == '1' && c == 1)
+{
+tc[i] = '0';
+}
+else if (oc[i] == '0' && c == 1)
+{
+tc[i] = '1';
+c = 0;
+}
+else
+{
+tc[i] = oc[i];
+}
+}
+tc[bs] = '\0';
+if (r == 0)
+{
+cout << "----------------------------------------------\n";
+cout << " The original binary = " << bn << endl;
+cout << " One's complement value = " << oc << endl;
+cout << " Two's complement value = " << tc << endl;
+}
+}
